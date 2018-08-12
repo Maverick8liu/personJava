@@ -1,0 +1,21 @@
+package patterns.bridge;
+
+public class TestUse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Object data = "Êý¾Ý";
+		ISaveData saveDataDb = new SaveToDB();
+		ISaveData saveDataFile = new SaveToFile();
+		AbstractSave save;
+		save = new NetSave(saveDataDb);
+		save.save(data);
+		save = new NetSave(saveDataFile);
+		save.save(data);
+		save = new LocalSave(saveDataDb);
+		save.save(data);
+		save = new LocalSave(saveDataFile);
+		save.save(data);
+	}
+
+}
